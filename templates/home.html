@@ -1,0 +1,94 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container-fluid mt=5 pt-5">
+  <div class="div d-flex">
+    <div class="border border-1 rounded text-center">
+    <h3>Categories</h3>
+      <ul class="w-25 h-25 d-flex flex-column">
+        <li class="list-unstyled my-2">
+          <a href="{% url 'home' %}">
+            All
+          </a>
+        </li>
+        {% for category in categories %}
+         
+          <li class="list-unstyled my-2">
+            <a href="{% url 'filter' category.id %}">
+              {{category.name}}
+            </a>
+          </li>
+        {% endfor %}
+      </ul> 
+    </div>
+
+    {% if books %}
+    {% comment %} cardssss {% endcomment %}
+    {% for book in books %}
+    <div>
+    <div class="card text-center m-3" style="width: 18rem;">
+      <img src="{{book.image.url}}" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">{{book.title}}</h5>
+        <p class="card-text">
+          {{book.description | truncatewords:10}}
+        </p>
+        {% for cat in book.category.all %}
+            <div class="btn btn-warning disabled btn-sm m-1">{{cat}}</div>
+          {% endfor %}
+          <div><a href="{% url 'detail' book.id %}" class="btn btn-primary mt-3">Details</a></div>
+      </div>
+    </div>
+  </div>
+    {% endfor %}
+
+    {% else %}
+    <h1 class="mr-5">There are no books in this category</h1>
+    {% endif %}
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  {% comment %} <div class="row">
+    <div class="col-4 mt-5 pt-5">
+      <ul class="list-unstyled w-25 h-25">
+        {% for category in categories %}
+        <a class="list-unstyled" href="{% url 'filter' category.id %}">
+          <li class="d-flex justify-content-around align-items-center mb-2 bg-body-tertiary h-25">
+            {{category.name}}
+            <span class=" badge text-bg-primary rounded-pill">14</span>
+          </li>
+        </a>
+        {% endfor %}
+      </ul>        
+    </div>
+
+    <div class="col-8">
+      <div class="container d-flex flex-wrap mt-5">
+      {% for book in books %}
+    <div class="card m-3" style="width: 18rem;">
+        <img src="{{book.image.url}}" class="card-img-top" alt="book_image">
+        <div class="card-body text-center">
+          <h5 class="card-title">{{book.title}}</h5>
+          <p class="card-text">{{book.description | truncatewords:10}}</p>
+          {% for cat in book.category.all %}
+            <div class="btn btn-warning disabled btn-sm m-1">{{cat}}</div>
+          {% endfor %}
+          <div><a href="{% url 'detail' book.id %}" class="btn btn-primary mt-3">Details</a></div>
+        </div>
+      </div>
+      {% endfor %} {% endcomment %}
+</div>
+{% endblock content %}

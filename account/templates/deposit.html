@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <div class="container">
+        <div class="text-center">
+            <h1>Deposit Money</h1>
+
+            {% if messages %}
+            {% for message in messages %}
+                <div class="bg-danger text-light text-justify text-bold h-25">{{message}}</div>
+            {% endfor %}
+            {% endif %}
+        
+        </div>
+        <form action="" method="POST">
+            {% csrf_token %}
+            {{form | crispy}}
+            <input class="btn btn-primary" type="submit" value="Deposit">
+        </form>
+    </div>
+{% endblock content %}
