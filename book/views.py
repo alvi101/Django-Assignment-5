@@ -37,9 +37,12 @@ class BookDetailView(DetailView):
         reviews = Review.objects.filter(book=book)
         review_form = ReviewForm()
 
-        account = self.request.user.account
-        user_borrow_history = BorrowHistory.objects.filter(account=account)
-        borrowed = user_borrow_history.filter(book=book).exists()
+        try:
+            account = self.request.user.account
+            user_borrow_history = BorrowHistory.objects.filter(account=account)
+            borrowed = user_borrow_history.filter(book=book).exists()
+        except:
+            borrowed = False
 
         context["form"] = review_form
         context["reviews"] = reviews
