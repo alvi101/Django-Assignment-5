@@ -95,6 +95,9 @@ DATABASES = {
         default='postgres://django_assignment_5_user:yHuJAHBdzJrCHnshv0pUa7Qlv76WMxT4@dpg-cnjavl6d3nmc73e9blo0-a.oregon-postgres.render.com/django_assignment_5',
     )
 }
+
+CSRF_TRUSTED_ORIGINS = ['https://django-assignment-5.onrender.com','https://*.127.0.0.1']
+
 #########################################
 """ Email configuration"""
 
