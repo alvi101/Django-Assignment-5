@@ -6,6 +6,7 @@ click
 colorama
 crispy-bootstrap5
 distlib
+dj-database-url
 Django
 django-crispy-forms
 django-environ
@@ -25,6 +26,7 @@ Pillow
 pipenv
 platformdirs
 psycopg2
+psycopg2-binary
 PyAutoGUI
 PyGetWindow
 PyMsgBox
@@ -36,6 +38,7 @@ pytweening
 pytz
 requests
 sqlparse
+typing_extensions
 tzdata
 urllib3
 virtualenv
